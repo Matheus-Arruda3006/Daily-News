@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: daily_news_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: daily_news
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - daily_news_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: daily_news_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@dailynews.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - daily_news_network
+
+volumes:
+  pgdata:
+  pgadmin_data:
+
+networks:
+  daily_news_network:
+    driver: bridge
