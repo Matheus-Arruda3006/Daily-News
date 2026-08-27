@@ -1,31 +1,25 @@
 {
   "name": "daily-news",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
+  "description": "Plataforma de notícias e publicações técnicas com React + Laravel + PostgreSQL + pgAdmin",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npm run dev --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "cd backend && php artisan serve",
+    "build": "npm run build --prefix frontend",
+    "db:migrate": "cd backend && php artisan migrate",
+    "db:seed": "cd backend && php artisan migrate:fresh --seed"
   },
-  "dependencies": {
-    "@types/react-dom": "18.2.6",
-    "autoprefixer": "10.4.14",
-    "faunadb": "^4.8.0",
-    "next": "13.4.6",
-    "next-auth": "^4.22.1",
-    "postcss": "8.4.24",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.9.0",
-    "sass": "^1.63.4",
-    "stripe": "^12.9.0",
-    "tailwindcss": "3.3.2"
-  },
-  "devDependencies": {
-    "@types/next-auth": "^3.15.0",
-    "@types/node": "^20.3.1",
-    "@types/react": "^18.2.13",
-    "typescript": "^5.1.3"
-  }
+  "keywords": [
+    "react",
+    "laravel",
+    "postgresql",
+    "pgadmin",
+    "vite",
+    "typescript",
+    "daily-news"
+  ],
+  "author": "Matheus Arruda",
+  "license": "MIT"
 }
